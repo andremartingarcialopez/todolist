@@ -16,13 +16,13 @@ export default function ListTasks({ tasks, dispatch }: ListTasksProps) {
   return (
     <>
 
-      <h2 className={`text-center text-3xl font-semibold ${tasks.length ? `text-green-600` : `text-black`}`}>{`${tasks.length ? `Tareas Registradas` : `Nada Registrado`}`}</h2>
+      <h2 className={`text-center text-2xl md:text-3xl font-semibold ${tasks.length ? `text-green-600` : `text-black`}`}>{`${tasks.length ? `Tareas Registradas` : `Nada Registrado`}`}</h2>
       {tasks.map(function (task) {
         return (
-          <div key={task.id} className="bg-gray-300 rounded-2xl p-5 flex justify-between items-center my-5 overflow-auto break-words">
+          <div key={task.id} className="bg-gray-300 rounded-2xl p-4 flex justify-between items-center my-5 overflow-auto break-words">
 
             <div>
-              <p className={`text-xl ${task.isComplete ? "line-through" : ""}`}>{task.taskToDo}</p>
+              <p className={`text ${task.isComplete ? "line-through" : ""}`}>{task.taskToDo}</p>
             </div>
 
             <div className="flex justify-center items-center gap-5 md:gap-10 ">

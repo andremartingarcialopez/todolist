@@ -12,8 +12,13 @@ export type InitialStateType = {
     id: Task["id"]
 }
 
+function getLocalStorage() {
+    const taskLocal = localStorage.getItem("tasks");
+    return taskLocal ? JSON.parse(taskLocal) : []
+}
+
 export const initialState = {
-    tasks: [],
+    tasks: getLocalStorage(),
     id: ""
 }
 
