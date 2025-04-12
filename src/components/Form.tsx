@@ -13,7 +13,8 @@ export default function Form({dispatch, stateTasks}: FormProps) {
 
     const [task, setTask] = useState<Task>({
         id: uuid(),
-        taskToDo: ""
+        taskToDo: "",
+        isComplete: false
     })
 
     useEffect(() => {
@@ -22,6 +23,8 @@ export default function Form({dispatch, stateTasks}: FormProps) {
             setTask(filterEdit);
         }
     },[stateTasks.id])
+
+    
 
     function hanldeChange(e: React.ChangeEvent<HTMLInputElement>) {
         setTask({...task, [e.target.id] : e.target.value})
@@ -32,7 +35,8 @@ export default function Form({dispatch, stateTasks}: FormProps) {
         dispatch({ type: "add-task", payload: { newTask: task } })
         setTask({
             id: uuid(),
-            taskToDo: ""
+            taskToDo: "",
+            isComplete: false
         })
     }
 
@@ -48,7 +52,7 @@ export default function Form({dispatch, stateTasks}: FormProps) {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <div className='flex justify-between items-center gap-4'>
+                <div className='flex justify-between items-center gap-1'>
                     <div className='w-full'>
                         <input className="p-3 bg-gray-300 rounded-2xl w-full" type="text" placeholder="Agrega tus tareas aqui..." id="taskToDo" value={task.taskToDo} onChange={hanldeChange} />
                     </div>
